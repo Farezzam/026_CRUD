@@ -29,3 +29,13 @@ db.connect((err) => {
     console.log('Connection successfully');
 })
 
+app.get('api/users', (req, res) => {
+    db.query('SELECT * from users', (err, result) => {
+        if(err){
+            console.error('Error executing query:' + err.stack);
+            res.status(500).send('Error retching users');
+            return;
+        }
+        res.json(result);
+    })
+})
