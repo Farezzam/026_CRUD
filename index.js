@@ -30,7 +30,7 @@ db.connect((err) => {
 })
 
 app.get('api/users', (req, res) => {
-    db.query('SELECT * from users', (err, result) => {
+    db.query('SELECT * from mahasiswa', (err, result) => {
         if(err){
             console.error('Error executing query:' + err.stack);
             res.status(500).send('Error retching users');
@@ -48,7 +48,7 @@ app.post('api/users', (req, res) => {
     }
 
     db.query(
-        "INSERT INTO users (nama, nim, kelas) VALUES (?, ?, ?)",
+        "INSERT INTO mahasiswa (nama, nim, kelas) VALUES (?, ?, ?)",
         [nama, nim, kelas],
         (err, result) => {
             if (err) {
